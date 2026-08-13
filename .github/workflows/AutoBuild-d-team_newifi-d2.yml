@@ -171,8 +171,8 @@ jobs:
         cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        # Patch rpcd-mod-luci: lower cmake minimum version from 3.31 to 3.25 (Ubuntu 22.04 ships 3.25.2)
-        find feeds/luci -name 'CMakeLists.txt' | xargs grep -l 'cmake_minimum_required' | xargs sed -i 's/cmake_minimum_required(VERSION 3\.[3-9][0-9]\+)/cmake_minimum_required(VERSION 3.25)/g'
+        # Patch rpcd-mod-luci: lower cmake minimum version to 3.25 (Ubuntu 22.04 ships 3.25.2)
+        find feeds/luci -name 'CMakeLists.txt' | xargs grep -l 'cmake_minimum_required' | xargs sed -i -E 's/cmake_minimum_required\(VERSION 3[.][3-9][0-9]+\)/cmake_minimum_required(VERSION 3.25)/g'
 
     - name: Accelerate
       if: env.CACHE_ACCELERATE == 'true'
