@@ -215,8 +215,23 @@ jobs:
       id: compile
       run: |
         cd openwrt
-        make -j4 || make -j1 V=s
-        [ "$?" == 0 ] && echo "Compile_Result=true" >> $GITHUB_ENV || echo "Compile_Result=false" >> $GITHUB_ENV
+        make -j$(nproc) 2>&1 | tee /tmp/build.log; BUILD_EXIT=${PIPESTATUS[0]}
+        if [ "$BUILD_EXIT" != "0" ]; then
+          echo "=== First pass failed, retrying verbose ==="
+          make -j1 V=s 2>&1 | tee /tmp/build_verbose.log; BUILD_EXIT=${PIPESTATUS[0]}
+          echo "=== ERROR SUMMARY ==="
+          grep -E "(^make\[|ERROR:|error:|\*\*\*|Configuring|opkg:)" /tmp/build_verbose.log | tail -60
+        fi
+        [ "$BUILD_EXIT" == 0 ] && echo "Compile_Result=true" >> $GITHUB_ENV || echo "Compile_Result=false" >> $GITHUB_ENV
+        exit $BUILD_EXIT
+
+    - name: Upload Build Error Log
+      uses: actions/upload-artifact@main
+      if: failure() && !cancelled()
+      with:
+        name: build-error-log
+        path: /tmp/build_verbose.log
+        if-no-files-found: ignore
 
     - name: Checkout Firmware
       if: steps.compile.outcome == 'success' && !cancelled()
