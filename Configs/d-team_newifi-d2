@@ -9,6 +9,13 @@ CONFIG_TARGET_ramips_mt7621_DEVICE_d-team_newifi-d2=y
 CONFIG_IPV6=y
 CONFIG_KERNEL_IPV6=y
 CONFIG_PACKAGE_ipv6helper=y
+# ucode runtime (required by newer luci-base)
+CONFIG_PACKAGE_ucode=y
+CONFIG_PACKAGE_ucode-mod-log=y
+CONFIG_PACKAGE_ucode-mod-fs=y
+CONFIG_PACKAGE_ucode-mod-uci=y
+CONFIG_PACKAGE_ucode-mod-ubus=y
+
 # CONFIG_PACKAGE_dnsmasq is not set
 CONFIG_PACKAGE_dnsmasq-full=y
 CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
