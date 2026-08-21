@@ -109,6 +109,7 @@ EOF
 		AddPackage msd_lite ximiTech luci-app-msd_lite main
 		AddPackage msd_lite ximiTech msd_lite main
 		AddPackage iptvhelper riverscn openwrt-iptvhelper master
+		AddPackage other linkease istore main
 		rm -r ${FEEDS_PKG}/mosdns
 		rm -r ${FEEDS_LUCI}/luci-app-mosdns
 		rm -r ${FEEDS_PKG}/curl
