@@ -100,11 +100,12 @@ EOF
 		# 使用当前 lede master (包含新版 ucode，提供 ucode-mod-log 等模块，与新版 luci feed 兼容)
 		# git reset --hard 1627fd2c745e496134834a8fb8145ba0aa458ae9
 		
-		rm -r ${FEEDS_LUCI}/luci-theme-argon*
+		# 不删 feeds 里的 argon（作为备用）
+		# rm -r ${FEEDS_LUCI}/luci-theme-argon*
 		AddPackage other vernesong OpenClash dev
 		AddPackage other jerrykuku luci-app-argon-config master
 		AddPackage other sbwml luci-app-mosdns v5-lua
-		AddPackage themes jerrykuku luci-theme-argon 18.06
+		AddPackage themes jerrykuku luci-theme-argon master
 		AddPackage themes thinktip luci-theme-neobird main
 		AddPackage msd_lite ximiTech luci-app-msd_lite main
 		AddPackage msd_lite ximiTech msd_lite main

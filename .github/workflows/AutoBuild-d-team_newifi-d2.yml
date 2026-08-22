@@ -270,7 +270,11 @@ jobs:
         if [ "$COUNT" -eq "0" ]; then
           echo "WARNING: bin/Firmware is empty, falling back to direct copy"
           mkdir -p openwrt/bin/Firmware
-          find openwrt/bin/targets -name "*.bin" | grep -v "factory" | xargs -I{} cp {} openwrt/bin/Firmware/ 2>/dev/null || true
+          # 只复制 sysupgrade 镜像，排除 initramfs/kernel/factory 等不可直接刷入的文件
+          find openwrt/bin/targets -name "*.bin" -o -name "*.tar" | \
+            grep -vE "factory|initramfs|kernel|rootfs|packages" | \
+            grep -iE "sysupgrade" | \
+            xargs -I{} cp {} openwrt/bin/Firmware/ 2>/dev/null || true
           ls -la openwrt/bin/Firmware/
         fi
         FINAL=$(ls openwrt/bin/Firmware/ 2>/dev/null | wc -l)
