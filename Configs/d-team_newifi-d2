@@ -34,7 +34,7 @@ CONFIG_PACKAGE_kmod-mt76=y
 
 # USB 相关
 CONFIG_PACKAGE_automount=y
-CONFIG_PACKAGE_smartmontools=y
+# CONFIG_PACKAGE_smartmontools is not set
 CONFIG_PACKAGE_luci-app-hd-idle=y
 CONFIG_PACKAGE_luci-app-usb-printer=y
 
@@ -48,7 +48,7 @@ CONFIG_PACKAGE_kmod-usb-net-huawei-cdc-ncm=y
 CONFIG_PACKAGE_kmod-usb-net-ipheth=y
 CONFIG_PACKAGE_kmod-usb-net-rndis=y
 CONFIG_PACKAGE_libudev-fbsd=y
-CONFIG_PACKAGE_usbutils=y
+# CONFIG_PACKAGE_usbutils is not set
 
 ## USB 网络存储
 # CONFIG_PACKAGE_autosamba is not set
@@ -58,11 +58,11 @@ CONFIG_PACKAGE_luci-app-vsftpd=y
 
 # LUCI Appliciations
 CONFIG_PACKAGE_luci-app-accesscontrol=y
-CONFIG_PACKAGE_luci-app-adbyby-plus=y
+# CONFIG_PACKAGE_luci-app-adbyby-plus is not set
 # CONFIG_PACKAGE_luci-app-adguardhome is not set
 CONFIG_PACKAGE_luci-app-autoupdate=y
-CONFIG_PACKAGE_luci-app-aria2=y
-CONFIG_PACKAGE_luci-app-aliyundrive-fuse=y
+# CONFIG_PACKAGE_luci-app-aria2 is not set
+# CONFIG_PACKAGE_luci-app-aliyundrive-fuse is not set
 CONFIG_PACKAGE_luci-app-ddns=y
 CONFIG_PACKAGE_ddns-scripts_aliyun=y
 CONFIG_PACKAGE_ddns-scripts_dnspod=y
@@ -71,7 +71,7 @@ CONFIG_PACKAGE_ddns-scripts_no-ip_com=y
 CONFIG_PACKAGE_luci-app-eqos=y
 CONFIG_PACKAGE_luci-app-filetransfer=y
 # CONFIG_PACKAGE_luci-app-frpc is not set
-CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
+# CONFIG_PACKAGE_luci-app-ipsec-vpnd is not set
 CONFIG_PACKAGE_luci-app-iperf3-server=y
 # CONFIG_PACKAGE_luci-app-jd-dailybonus is not set
 CONFIG_PACKAGE_luci-app-mwan3=y
@@ -79,16 +79,16 @@ CONFIG_PACKAGE_luci-app-mwan3helper=y
 CONFIG_PACKAGE_luci-app-nlbwmon=y
 CONFIG_PACKAGE_luci-app-natter2=y
 CONFIG_PACKAGE_luci-app-onliner=y
-CONFIG_PACKAGE_luci-app-pptp-server=y
+# CONFIG_PACKAGE_luci-app-pptp-server is not set
 # CONFIG_PACKAGE_luci-app-rclone is not set
 # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_fuse-utils is not set
 # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng is not set
 # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-webui is not set
 CONFIG_PACKAGE_luci-app-serverchan=y
-CONFIG_PACKAGE_luci-app-sqm=y
+# CONFIG_PACKAGE_luci-app-sqm is not set
 CONFIG_PACKAGE_luci-app-syncdial=y
 CONFIG_PACKAGE_luci-app-smartdns=y
-CONFIG_PACKAGE_luci-app-socat=y
+# CONFIG_PACKAGE_luci-app-socat is not set
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-turboacc=y
 CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_OFFLOADING=y
@@ -117,8 +117,8 @@ CONFIG_PACKAGE_luci-app-argon-config=y
 # OpenClash
 CONFIG_PACKAGE_luci-app-openclash=y
 
-# Tailscale
-CONFIG_PACKAGE_tailscale=y
+# Tailscale 已移除（MIPS Go 二进制过大，约8MB；WireGuard/ZeroTier 已覆盖需求）
+# CONFIG_PACKAGE_tailscale is not set
 
 # OpenVPN
 CONFIG_PACKAGE_openvpn-openssl=y
@@ -131,7 +131,7 @@ CONFIG_PACKAGE_istore=y
 # Other Appliciations
 CONFIG_PACKAGE_bash=y
 CONFIG_PACKAGE_curl=y
-CONFIG_PACKAGE_davfs2=y
+# CONFIG_PACKAGE_davfs2 is not set
 CONFIG_PACKAGE_htop=y
 CONFIG_PACKAGE_iperf3=y
 CONFIG_PACKAGE_jq=y
@@ -139,6 +139,7 @@ CONFIG_PACKAGE_lsblk=y
 CONFIG_PACKAGE_ppp-mod-pptp=y
 CONFIG_PACKAGE_ppp-mod-pppol2tp=y
 CONFIG_PACKAGE_wpad-openssl=y
-CONFIG_PACKAGE_xz=y
-CONFIG_PACKAGE_xz-utils=y
+# CONFIG_PACKAGE_xz is not set
+# CONFIG_PACKAGE_xz-utils is not set
 CONFIG_PACKAGE_xl2tpd=y
+
