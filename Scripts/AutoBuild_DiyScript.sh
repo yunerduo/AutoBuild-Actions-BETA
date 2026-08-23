@@ -36,8 +36,9 @@ Firmware_Diy_Core() {
 	Fw_MFormat=AUTO
 	# 自定义固件格式, AUTO: [自动识别]
 	
-	Regex_Skip="packages|buildinfo|sha256sums|manifest|kernel|rootfs|factory|itb|profile|ext4|json"
+	Regex_Skip="packages|buildinfo|sha256sums|manifest|rootfs|factory|itb|profile|ext4|json"
 	# 输出固件时丢弃包含该内容的固件/文件
+	# 注意: 不过滤 kernel，否则 NAND 设备的 initramfs-kernel.bin 会被排除
 	
 	AutoBuild_Features=true
 	# 添加 AutoBuild 固件特性, true: [开启]; false: [关闭]
