@@ -74,6 +74,10 @@ env:
 ### 结束
 ### 请按需求修改以上内容
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   Compile:
     runs-on: ubuntu-22.04
