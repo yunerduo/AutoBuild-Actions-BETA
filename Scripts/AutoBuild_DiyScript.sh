@@ -98,12 +98,8 @@ EOF
 		sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 		sed -i '/uci commit luci/i\uci set luci.main.mediaurlbase="/luci-static/argon"' $(PKG_Finder d package default-settings)/files/zzz-default-settings
 		#sed -i "s?openwrt-23.05?master?g" ${FEEDS_CONF}
-		# 锁定到已知能产生 sysupgrade.bin 的 lede commit
-		git reset --hard 1627fd2c745e496134834a8fb8145ba0aa458ae9
-		# 单独升级 ucode 包以获取 ucode-mod-log 支持（新版 luci-base 依赖）
-		# 同时移除 libmd 依赖（仅在编译 ucode-mod-digest 时需要，我们不用）
-		wget -q -O package/utils/ucode/Makefile https://raw.githubusercontent.com/coolsnowwolf/lede/master/package/utils/ucode/Makefile
-		sed -i 's/PKG_BUILD_DEPENDS:=libmd/PKG_BUILD_DEPENDS:=/' package/utils/ucode/Makefile
+		# 使用 lede 最新 HEAD，与当前 feeds 完全兼容（lede HEAD 同样只产出 initramfs-kernel.bin）
+		# 不做 git reset，避免 lede 版本与 feeds 版本不匹配导致 luci init 崩溃
 		
 		# 不删 feeds 里的 argon（作为备用）
 		# rm -r ${FEEDS_LUCI}/luci-theme-argon*
