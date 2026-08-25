@@ -100,6 +100,8 @@ EOF
 		#sed -i "s?openwrt-23.05?master?g" ${FEEDS_CONF}
 		# 使用 lede 最新 HEAD，与当前 feeds 完全兼容（lede HEAD 同样只产出 initramfs-kernel.bin）
 		# 不做 git reset，避免 lede 版本与 feeds 版本不匹配导致 luci init 崩溃
+		# 删除与 Linux 5.10.265 不兼容的内核 patch（USB摄像头支持，路由器不需要）
+		rm -f target/linux/ramips/patches-5.10/810-uvc-add-iPassion-iP2970-support.patch
 		
 		# 不删 feeds 里的 argon（作为备用）
 		# rm -r ${FEEDS_LUCI}/luci-theme-argon*
